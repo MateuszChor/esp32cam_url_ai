@@ -9,12 +9,11 @@ from statistics import mean as average
 # import face_recognition
 
 
-# path = r'C:\Users\Matias\Desktop\esp32_faceRecogniton\image_folder'
-BASE_DIR = Path(__file__).absolute().parent
+BASE_DIR = Path(__file__).absolute().parent.parent
 path_to_images = os.path.join(BASE_DIR, "image_folder")
 path_to_csv = os.path.join(BASE_DIR)
-path_to_caffemodel = os.path.join(BASE_DIR, "res10_300x300_ssd_iter_140000_fp16.caffemodel")
-path_to_deploy = os.path.join(BASE_DIR, "deploy.prototxt")
+path_to_caffemodel = os.path.join(BASE_DIR, "../modules/res10_300x300_ssd_iter_140000_fp16.caffemodel")
+path_to_deploy = os.path.join(BASE_DIR, "../modules/deploy.prototxt")
 
 url = 'http://ip/cam-hi.jpg'
 '''cam.bmp / cam-lo.jpg /cam-hi.jpg / cam.mjpeg '''

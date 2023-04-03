@@ -1,9 +1,7 @@
-from this import s
 import cv2
 import urllib.request
 import numpy as np
 import os
-from datetime import datetime
 from pathlib import Path
 from statistics import mean as average
 
@@ -12,16 +10,11 @@ from statistics import mean as average
 BASE_DIR = Path(__file__).absolute().parent
 path_to_images = os.path.join(BASE_DIR, "image_folder")
 path_to_csv = os.path.join(BASE_DIR)
-path_to_caffemodel = os.path.join(BASE_DIR, "res10_300x300_ssd_iter_140000_fp16.caffemodel")
-path_to_deploy = os.path.join(BASE_DIR, "deploy.prototxt")
-path_to_stop_xml = os.path.join(BASE_DIR, "stop_data.xml")
-path_to_cars_xml = os.path.join(BASE_DIR, "cars.xml")
+path_to_caffemodel = os.path.join(BASE_DIR, "../modules/res10_300x300_ssd_iter_140000_fp16.caffemodel")
+path_to_deploy = os.path.join(BASE_DIR, "../modules/deploy.prototxt")
 
-url = 'http://ip/cam-hi.jpg'
+url = 'http://192.168.8.116/cam-hi.jpg'
 '''cam.bmp / cam-lo.jpg /cam-hi.jpg / cam.mjpeg '''
-
-stop_data = cv2.CascadeClassifier(path_to_stop_xml)
-cars_data = cv2.CascadeClassifier(path_to_cars_xml)
 
 
 
@@ -30,7 +23,7 @@ while True:
     img_resp=urllib.request.urlopen(url)
     imgnp=np.array(bytearray(img_resp.read()),dtype=np.uint8)
     img=cv2.imdecode(imgnp,-1)
-# img = captureScreen()
+    # img = captureScreen()
     imgResize = cv2.resize(img, (0, 0), None, 0.25, 0.25)
     # imgS = cv2.cvtColor(imgResize, cv2.COLOR_BGR2RGB)
     imgGray = cv2.cvtColor(imgResize, cv2.COLOR_BGR2GRAY)
