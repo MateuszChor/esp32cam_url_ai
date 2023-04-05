@@ -20,7 +20,7 @@ cars_data = cv2.CascadeClassifier(path_to_cars_xml)
 
 while True:
 
-    #success, img = cap.read()
+    # success, img = cap.read()
     img_resp = urllib.request.urlopen(url)
 
     img_np = np.array(bytearray(img_resp.read()), dtype=np.uint8)
@@ -32,32 +32,23 @@ while True:
     imgGray = cv2.cvtColor(imgResize, cv2.COLOR_BGR2GRAY)
 
     found = stop_data.detectMultiScale(imgGray, minSize=(20, 20))
-    found = cars_data.detectMultiScale(imgGray, 1.1, 1)
-
-    net = cv2.dnn.readNetFromCaffe(path_to_deploy, path_to_caffemodel)
-    h, w = imgResize.shape[:2]
-    blob = cv2.dnn.blobFromImage(cv2.resize(imgResize, (300, 300)),
-                                 1.0,
-                                 (300, 300),
-                                 (104.0, 117.0, 123.0)
-                                 )
+    # found = cars_data.detectMultiScale(imgGray, 1.1, 1)
+    # found = cars_data.detectMultiScale(imgGray, minSize=(20, 20))
 
     # net.setInput(blob)
 
     # There may be more than one
     # sign in the image
     for (x, y, width, height) in found:
-
         # We draw a green rectangle around
         # every recognized sign
         cv2.rectangle(imgResize, (x, y),
-                    (x + height, y + width),
-                    (0, 255, 0), 5)
+                      (x + height, y + width),
+                      (0, 255, 0), 5)
 
-    cv2.imshow('Webcam', imgResize)
+    cv2.imshow('Esp32Cam', imgResize)
     key = cv2.waitKey(5)
     if key == ord('q'):
         break
 
 cv2.destroyAllWindows()
-cv2.imread
