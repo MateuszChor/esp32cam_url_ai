@@ -1,0 +1,24 @@
+names:
+- bishop
+- black-bishop
+- black-king
+- black-knight
+- black-pawn
+- black-queen
+- black-rook
+- white-bishop
+- white-king
+- white-knight
+- white-pawn
+- white-queen
+- white-rook
+nc: 13
+roboflow:
+  license: Public Domain
+  project: chess-full-91y99
+  url: https://app.roboflow.com/mateusz-v8gxg/chess-full-91y99/1
+  version: 1
+  workspace: mateusz-v8gxg
+test: ../test/images
+train: Chess-Pieces-1/train/images
+val: Chess-Pieces-1/valid/images
